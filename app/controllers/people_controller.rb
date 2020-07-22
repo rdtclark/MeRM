@@ -15,6 +15,11 @@ class PeopleController < ApplicationController
     render json: @person
   end
 
+  def update
+    @person.update(person_params)
+    head :no_content
+  end
+
   def destroy
     @person.destroy
     head :no_content
