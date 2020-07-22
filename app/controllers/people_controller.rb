@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-  before_action :set_person
+  before_action :set_person, only: [:show, :update, :destroy]
 
   def index
     people = Person.all
@@ -10,7 +10,21 @@ class PeopleController < ApplicationController
     render json: @person
   end
 
+  def create
+    @person = Person.create!(person_params)
+    render json: @person
+  end
+
+  def destroy
+    @person.destroy
+    head :no_content
+  end
+
   private 
+
+  def person_params
+    params.permit(:first_name, :last_name)
+  end
 
   def set_person
     @person = Person.find(params[:id])
