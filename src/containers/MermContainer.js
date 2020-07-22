@@ -1,7 +1,5 @@
 import React from 'react';
 import PeopleList from '../components/PeopleList'
-//import Person from '../components/Person'
-
 
 class MermContainer extends React.Component {
 
